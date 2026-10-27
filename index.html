@@ -187,7 +187,11 @@ const send = document.getElementById("send");
 const status = document.getElementById("status");
 const welcome = document.getElementById("welcome");
 
-let history = [];
+let history = JSON.parse(localStorage.getItem('cortex_history') || '[]');
+
+function saveHistory() {
+  localStorage.setItem('cortex_history', JSON.stringify(history));
+}
 
 function addMessage(text, role) {
   const bubble = document.createElement("div");
